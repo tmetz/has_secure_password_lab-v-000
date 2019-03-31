@@ -1,7 +1,11 @@
 class UserController < ApplicationController
-  def username:string
+  def create
+    User.create(user_params)
   end
+ 
+  private
 
-  def password_digest:string
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end
